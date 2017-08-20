@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/children', 'ChildrenController@index');
+Route::get('/children/{child}', 'ChildrenController@show');
+
+Route::get('/children/{child}/flash-cards', 'FlashCardsController@index');

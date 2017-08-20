@@ -22,3 +22,25 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Child::class, function ($faker) {
+    return [
+        'user_id' => function () {
+            return factory('App\User')->create()->id;
+        },
+        'name' => $faker->word,
+        'alias' => $faker->word
+    ];
+});
+
+$factory->define(App\Flash_Card::class, function ($faker) {
+    return [
+        'child_id' => function () {
+            return factory('App\Child')->create()->id;
+        },
+        'user_id' => function () {
+            return factory('App\User')->create()->id;
+        },
+        'title' => $faker->word
+    ];
+});
